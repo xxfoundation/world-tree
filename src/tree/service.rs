@@ -12,6 +12,13 @@ use tokio::task::JoinHandle;
 use super::error::WorldTreeError;
 use super::{ChainId, Hash, InclusionProof, WorldTree};
 
+#[cfg(feature = "xxdk")]
+pub use cmix::CmixInclusionProofService;
+
+#[cfg(feature = "xxdk")]
+mod cmix;
+
+
 /// Service that keeps the World Tree synced with `WorldIDIdentityManager` and exposes an API endpoint to serve inclusion proofs for a given World ID.
 
 pub struct InclusionProofService<M: Middleware + 'static> {

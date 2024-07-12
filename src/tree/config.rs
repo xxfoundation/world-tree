@@ -22,6 +22,9 @@ pub struct ServiceConfig {
     pub socket_address: SocketAddr,
     #[serde(default)]
     pub telemetry: Option<TelemetryConfig>,
+    /// Configuration for the cMix server
+    #[cfg(feature = "xxdk")]
+    pub cmix: xxdk::rpc::RpcServerConfig,
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
